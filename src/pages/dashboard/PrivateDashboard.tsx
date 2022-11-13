@@ -1,8 +1,11 @@
+import { lazy } from 'react';
 import { Route, Navigate } from 'react-router-dom';
 import { privateRoutes } from '../../constants/routesConstants';
 import DashboardPage from './DashboardPage';
-import DashboardCommentsPage from './DashboardCommentsPage';
 import RouteWithNotFound from '../../router/RouteWithNotFound';
+
+const DashboardCommentsPage = lazy(() => import('./DashboardCommentsPage'));
+
 const PrivateDashboard = () => {
   return (
     <div>
