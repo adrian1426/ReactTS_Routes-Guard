@@ -4,6 +4,7 @@ import { DashboardPage } from './pages/dashboard';
 import { LoginPage } from './pages/login';
 import appStore from './redux/store';
 import './App.css';
+import { publicRoutes, privateRoutes } from './constants/routesConstants';
 
 function App() {
 
@@ -14,7 +15,8 @@ function App() {
           <Routes>
             <Route path='/' element={<LoginPage />} />
             <Route path='*' element={<h1>Not Found Page</h1>} />
-            <Route path='/dashboard' element={<DashboardPage />} />
+            <Route path={publicRoutes.LOGIN} element={<LoginPage />} />
+            <Route path={privateRoutes.DASHBOARD} element={<DashboardPage />} />
           </Routes>
         </BrowserRouter>
       </Provider>

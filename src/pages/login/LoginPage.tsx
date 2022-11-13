@@ -1,4 +1,3 @@
-import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { createUser, resetUser } from '../../redux/states/userState';
 import { getMorty } from "../../services/authService";
@@ -15,13 +14,11 @@ const LoginPage = () => {
     }
   };
 
-  useEffect(() => {
-    _getMorty();
-  }, []);
-
   return (
     <div>
       <h1>Login</h1>
+      <br />
+      <button onClick={_getMorty}>Iniciar Sesión</button>
     </div>
   );
 };
