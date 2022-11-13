@@ -9,11 +9,20 @@ const initialState: User = {
 
 const userSlice = createSlice({
   name: 'user',
-  initialState,
+  initialState: localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user') as string) : initialState,
   reducers: {
-    createUser: (state, action) => action.payload,
-    updateUser: (state, action) => ({ ...state, ...action.payload }),
-    resetUser: () => initialState
+    createUser: (state, action) => {
+      localStorage.setItem('user', JSON.stringify(action.payload));
+      return action.payload;
+    },
+    updateUser: (state, action) => {
+      localStorage.setItem('user', JSON.stringify({ ...state, ...action.payload }));
+      return { ...state, ...action.payload };
+    },
+    resetUser: () => {
+      localStorage.removeItem('user');
+      return initialState;
+    }
   }
 });
 
