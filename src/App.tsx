@@ -5,6 +5,7 @@ import { LoginPage } from './pages/login';
 import appStore from './redux/store';
 import './App.css';
 import { publicRoutes, privateRoutes } from './constants/routesConstants';
+import AuthGuard from './guard/AuthGuard';
 
 function App() {
 
@@ -16,7 +17,10 @@ function App() {
             <Route path='/' element={<LoginPage />} />
             <Route path='*' element={<h1>Not Found Page</h1>} />
             <Route path={publicRoutes.LOGIN} element={<LoginPage />} />
-            <Route path={privateRoutes.DASHBOARD} element={<DashboardPage />} />
+
+            <Route element={<AuthGuard />}>
+              <Route path={privateRoutes.DASHBOARD} element={<DashboardPage />} />
+            </Route>
           </Routes>
         </BrowserRouter>
       </Provider>
