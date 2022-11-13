@@ -1,9 +1,11 @@
+import { lazy } from 'react';
 import { BrowserRouter, Route, Navigate } from 'react-router-dom';
 import { privateRoutes, publicRoutes } from '../constants/routesConstants';
 import AuthGuard from '../guard/AuthGuard';
-import PrivateDashboard from '../pages/dashboard/PrivateDashboard';
-import LoginPage from '../pages/login/LoginPage';
 import RouteWithNotFound from './RouteWithNotFound';
+
+const LoginPage = lazy(() => import('../pages/login/LoginPage'));
+const PrivateDashboard = lazy(() => import('../pages/dashboard/PrivateDashboard'))
 
 const AppRouter = () => {
   return (
